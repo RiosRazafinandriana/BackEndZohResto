@@ -5,14 +5,15 @@ const { Client } = require('pg');
 const app = express()
 app.use(express.json())
 app.use(cors())
+require('dotenv').config();
 
 //Connection BD
 const client = new Client({
-	user: 'postgres',
-	password: 'mikhail',
-	host: 'localhost',
-	port: '5432',
-	database: 'zoh_resto',
+	user: process.env.USER,
+	password: process.env.PASSWORD,
+	host: process.env.HOST,
+	port: process.env.PORT,
+	database: process.env.DATABASE
 });
 
 client.connect(function(err) {
